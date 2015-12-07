@@ -1,0 +1,35 @@
+{
+  "name": "ls-chunk-store",
+  "description": "Browser localStorage chunk store that is abstract-chunk-store compliant",
+  "version": "1.0.0",
+  "author": {
+    "name": "Diego Rodríguez Baquero",
+    "email": "diegorbaquero@gmail.com",
+    "url": "http://diegorbaquero.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/DiegoRBaquero/ls-chunk-store/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "standard": "^5.4.1"
+  },
+  "homepage": "https://github.com/feross/fs-chunk-store",
+  "keywords": [
+    "abstract-chunk-store",
+    "chunk",
+    "localstorage",
+    "ls",
+    "store"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DiegoRBaquero/ls-chunk-store.git"
+  },
+  "scripts": {
+    "test": "standard"
+  }
+}
