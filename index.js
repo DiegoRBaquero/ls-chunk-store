@@ -9,7 +9,7 @@ function Storage (chunkLength, opts) {
   this.chunkLength = Number(chunkLength)
   if (!this.chunkLength) throw new Error('First argument must be a chunk length')
   this.prefix = opts.prefix || opts.files ? opts.files[0].path : Math.random().toString(36)
-  
+
   this.closed = false
   this.length = Number(opts.length) || Infinity
 
