@@ -8,3 +8,56 @@
 [downloads-url]: https://npmjs.org/package/ls-chunk-store
 
 #### Browser localStorage chunk store that is [abstract-chunk-store](https://github.com/mafintosh/abstract-chunk-store) compliant
+
+## Install
+
+```
+npm install ls-chunk-store
+```
+
+## Usage
+
+### Generate random prefix
+
+``` js
+var LSChunkStore = require('ls-chunk-store')
+
+var chunks = new LSChunkStore(10)
+```
+
+### Use specified prefix
+
+``` js
+var LSChunkStore = require('ls-chunk-store')
+
+var chunks = new LSChunkStore(10, {
+  prefix: 'myFile.txt'
+})
+```
+
+### put, get, close, destroy
+
+```js
+chunks.put(0, new Buffer('0123456789'), function (err) {
+  if (err) throw err
+
+  chunks.get(0, function (err, chunk) {
+    if (err) throw err
+    console.log(chunk) // '0123456789' as a buffer
+
+    chunks.close(function (err) {
+      if (err) throw err
+      console.log('storage is closed')
+
+      chunks.destroy(function (err) {
+        if (err) throw err
+        console.log('files is deleted')
+      })
+    })
+  })
+})
+```
+
+## License
+
+MIT. Copyright (c) [Diego Rodríguez Baquero](http://diegorbaquero.com).
