@@ -1,7 +1,7 @@
 {
   "name": "ls-chunk-store",
   "description": "Browser localStorage chunk store that is abstract-chunk-store compliant",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "Diego Rodríguez Baquero",
     "email": "diegorbaquero@gmail.com",
@@ -11,6 +11,7 @@
     "url": "https://github.com/DiegoRBaquero/ls-chunk-store/issues"
   },
   "dependencies": {
+    "localStorage": "^1.0.3"
   },
   "devDependencies": {
     "abstract-chunk-store": "^1.1.8",
