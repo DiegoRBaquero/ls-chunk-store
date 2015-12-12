@@ -8,7 +8,7 @@ function Storage (chunkLength, opts) {
 
   this.chunkLength = Number(chunkLength)
   if (!this.chunkLength) throw new Error('First argument must be a chunk length')
-  this.prefix = opts.prefix || opts.files ? opts.files[0].path : Math.random().toString(36)
+  this.prefix = '/lscs/' + (opts.prefix || opts.files ? opts.files[0].path : Math.random().toString(36))
 
   this.chunks = []
   this.closed = false
@@ -45,7 +45,7 @@ Storage.prototype.put = function (index, buf, cb) {
         var oldestTime = JSON.parse(oldestEntry).time
         var oldestLength = oldestEntry.length
         for (var key in localStorage) {
-          if (key === 'debug') continue
+          if (!key.startsWith('/lscs/')) continue
           if (key.startsWith(this.prefix)) {
             continue
           }
@@ -67,7 +67,9 @@ Storage.prototype.put = function (index, buf, cb) {
       }
     }
   }
-  this.chunks[index] = buf
+  if (this.overlap) {
+    this.chunks[index] = buf
+  }
 
   nextTick(cb, null)
 }

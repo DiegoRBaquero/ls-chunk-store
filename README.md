@@ -9,10 +9,27 @@
 
 #### Browser localStorage chunk store that is [abstract-chunk-store](https://github.com/mafintosh/abstract-chunk-store) compliant
 
+## Features
+
+- Chunks that don't fit in localStorage remain in memory
+- Works as a persistent cache of chunks
+- Oldest ls-chunk-store chunks are removed when store is full
+
 ## Install
 
 ```
 npm install ls-chunk-store
+```
+
+## Build
+
+The following command will build ls-chunk-store.min.js in the dist folder
+```
+npm run-script build
+```
+The following command will build ls-chunk-store.js in the root folder
+```
+npm run-script build-dev
 ```
 
 ## Usage
