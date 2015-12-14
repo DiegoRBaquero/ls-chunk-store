@@ -23,7 +23,7 @@ npm install ls-chunk-store
 
 ####You can also use the browserified version from jsDelivr:
 ````html
-<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+<script src="https://cdn.jsdelivr.net/ls-chunk-store/latest/ls-chunk-store.min.js"></script>
 ````
 And simply use lsChunkStore from your app. ([Example](https://github.com/DiegoRBaquero/BTorrent/blob/ls-chunk-store/app.coffee#L6))
 
