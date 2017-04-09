@@ -1,4 +1,6 @@
 # ls-chunk-store [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/DiegoRBaquero/ls-chunk-store.svg)](https://greenkeeper.io/)
                  
 [travis-image]: https://img.shields.io/travis/DiegoRBaquero/ls-chunk-store.svg?style=flat
 [travis-url]: https://travis-ci.org/DiegoRBaquero/ls-chunk-store
@@ -8,6 +10,8 @@
 [downloads-url]: https://npmjs.org/package/ls-chunk-store
 
 #### Browser localStorage chunk store that is [abstract-chunk-store](https://github.com/mafintosh/abstract-chunk-store) compliant
+
+[![abstract chunk store](https://cdn.rawgit.com/mafintosh/abstract-chunk-store/master/badge.svg)](https://github.com/mafintosh/abstract-chunk-store)
 
 ## Features
 
@@ -20,6 +24,12 @@
 ```
 npm install ls-chunk-store
 ```
+
+####You can also use the browserified version from jsDelivr:
+````html
+<script src="https://cdn.jsdelivr.net/ls-chunk-store/latest/ls-chunk-store.min.js"></script>
+````
+
 
 ## Build
 
@@ -77,4 +87,4 @@ chunks.put(0, new Buffer('0123456789'), function (err) {
 
 ## License
 
-MIT. Copyright (c) [Diego Rodríguez Baquero](http://diegorbaquero.com).
+MIT. Copyright (c) [Diego Rodríguez Baquero](https://diegorbaquero.com).
