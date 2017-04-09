@@ -14,11 +14,11 @@
     "localStorage": "^1.0.3"
   },
   "devDependencies": {
-    "abstract-chunk-store": "^1.1.8",
-    "browserify": "^12.0.1",
-    "standard": "^5.4.1",
-    "tape": "^4.2.2",
-    "uglify-js": "^2.6.1"
+    "abstract-chunk-store": "^1.3.0",
+    "browserify": "^14.3.0",
+    "standard": "^10.0.1",
+    "tape": "^4.6.3",
+    "uglify-js": "^2.8.22"
   },
   "homepage": "https://github.com/DiegoRBaquero/ls-chunk-store",
   "keywords": [

@@ -1,6 +1,6 @@
 module.exports = Storage
 
-var localStorage = require('localStorage')
+const localStorage = require('localStorage')
 
 function Storage (chunkLength, opts) {
   if (!(this instanceof Storage)) return new Storage(chunkLength, opts)
@@ -23,7 +23,7 @@ function Storage (chunkLength, opts) {
 
 Storage.prototype.put = function (index, buf, cb) {
   if (this.closed) return nextTick(cb, new Error('Storage is closed'))
-  var isLastChunk = (index === this.lastChunkIndex)
+  const isLastChunk = (index === this.lastChunkIndex)
   if (isLastChunk && buf.length !== this.lastChunkLength) {
     return nextTick(cb, new Error('Last chunk length must be ' + this.lastChunkLength))
   }
@@ -31,27 +31,27 @@ Storage.prototype.put = function (index, buf, cb) {
     return nextTick(cb, new Error('Chunk length must be ' + this.chunkLength))
   }
 
-  var toInsert = JSON.stringify(JSON.parse(JSON.stringify({object: buf, length: buf.length, time: Date.now()})))
-  var succeed = false
+  const toInsert = JSON.stringify(JSON.parse(JSON.stringify({object: buf, length: buf.length, time: Date.now()})))
+  let succeed = false
   while (!succeed && !this.overlap) {
     try {
       localStorage.setItem(this.prefix + '_' + index, toInsert)
       succeed = true
     } catch (e) {
-      var clearedSpace = 0
+      let clearedSpace = 0
       while (clearedSpace < buf.length) {
-        var oldestKey = localStorage.key(0)
-        var oldestEntry = localStorage.getItem(oldestKey)
-        var oldestTime = JSON.parse(oldestEntry).time
-        var oldestLength = oldestEntry.length
-        for (var key in localStorage) {
+        let oldestKey = localStorage.key(0)
+        const oldestEntry = localStorage.getItem(oldestKey)
+        let oldestTime = JSON.parse(oldestEntry).time
+        let oldestLength = oldestEntry.length
+        for (const key in localStorage) {
           if (!key.startsWith('/lscs/')) continue
           if (key.startsWith(this.prefix)) {
             continue
           }
-          var tempEntry = localStorage.getItem(key)
-          if (tempEntry == null) continue
-          var tempObject = JSON.parse(tempEntry)
+          const tempEntry = localStorage.getItem(key)
+          if (tempEntry === null) continue
+          const tempObject = JSON.parse(tempEntry)
           if (tempObject.time < oldestTime) {
             oldestKey = key
             oldestTime = tempObject.time
@@ -77,19 +77,19 @@ Storage.prototype.put = function (index, buf, cb) {
 Storage.prototype.get = function (index, opts, cb) {
   if (typeof opts === 'function') return this.get(index, null, opts)
   if (this.closed) return nextTick(cb, new Error('Storage is closed'))
-  var buf = this.chunks[index]
+  let buf = this.chunks[index]
   if (!buf) {
-    var lsItem = localStorage.getItem(this.prefix + '_' + index)
-    if (lsItem != null) {
-      buf = new Buffer(JSON.parse(lsItem).object.data)
+    const lsItem = localStorage.getItem(this.prefix + '_' + index)
+    if (lsItem !== null) {
+      buf = Buffer.from(JSON.parse(lsItem).object.data)
       this.chunks[index] = buf
     }
   }
 
   if (!buf) return nextTick(cb, new Error('Chunk not found'))
   if (!opts) return nextTick(cb, null, buf)
-  var offset = opts.offset || 0
-  var len = opts.length || (buf.length - offset)
+  const offset = opts.offset || 0
+  const len = opts.length || (buf.length - offset)
   nextTick(cb, null, buf.slice(offset, len + offset))
 }
 
@@ -102,7 +102,7 @@ Storage.prototype.close = function (cb) {
 Storage.prototype.destroy = function (cb) {
   this.closed = true
   this.chunks = null
-  for (var key in localStorage) {
+  for (const key in localStorage) {
     if (key.startsWith(this.prefix)) {
       localStorage.removeItem(key)
     }
