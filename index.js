@@ -31,7 +31,7 @@ Storage.prototype.put = function (index, buf, cb) {
     return nextTick(cb, new Error('Chunk length must be ' + this.chunkLength))
   }
 
-  const toInsert = JSON.stringify(JSON.parse(JSON.stringify({object: buf, length: buf.length, time: Date.now()})))
+  const toInsert = JSON.stringify(JSON.parse(JSON.stringify({ object: buf, length: buf.length, time: Date.now() })))
   let succeed = false
   while (!succeed && !this.overlap) {
     try {
