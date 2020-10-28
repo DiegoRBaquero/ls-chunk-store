@@ -17,7 +17,7 @@
     "abstract-chunk-store": "1.4.0",
     "babili": "0.1.4",
     "browserify": "16.5.2",
-    "standard": "14.3.3",
+    "standard": "15.0.1",
     "tape": "5.0.0"
   },
   "homepage": "https://github.com/DiegoRBaquero/ls-chunk-store",
