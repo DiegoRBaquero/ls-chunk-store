@@ -16,7 +16,7 @@
   "devDependencies": {
     "abstract-chunk-store": "1.4.0",
     "babili": "0.1.4",
-    "browserify": "16.5.2",
+    "browserify": "17.0.0",
     "standard": "17.0.0",
     "tape": "5.0.0"
   },
